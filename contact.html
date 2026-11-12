@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visite et contact — Galerie Azurine</title>
+  <meta name="description" content="Adresse, horaires et contact de la Galerie Azurine à Nice. Inscription gratuite aux invitations des vernissages.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.className = 'js';</script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img src="assets/img/logo.svg" alt="" width="36" height="36">
+        <span>Galerie Azurine</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+      <nav class="main-nav" id="menu-principal" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="expositions.html">Expositions</a></li>
+          <li><a href="galerie.html">La galerie</a></li>
+          <li><a href="contact.html" aria-current="page">Visite</a></li>
+        </ul>
+        <a class="btn btn-action btn-bloc" href="contact.html#inscription">S'inscrire</a>
+      </nav>
+    </div>
+  </header>
+  <main id="contenu">
+    <section class="section fond-lin" aria-labelledby="titre-visite">
+      <div class="container split aligne-haut">
+        <div class="stack">
+          <p class="surtitre">Visite &amp; contact</p>
+          <h1 id="titre-visite">Venez voir les œuvres en vrai.</h1>
+          <dl class="infos">
+            <div><dt>Adresse</dt><dd>14 rue Bonaparte, 06300 Nice</dd></div>
+            <div><dt>Horaires</dt><dd>Mardi – samedi : 10h – 19h<br>Dimanche : 14h – 18h<br>Lundi : fermé</dd></div>
+            <div><dt>Téléphone</dt><dd><a href="tel:+33493271852">04 93 27 18 52</a></dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:contact@galerie-azurine.fr">contact@galerie-azurine.fr</a></dd></div>
+            <div><dt>Contact</dt><dd>Lucien Ferrand</dd></div>
+          </dl>
+          <iframe class="carte-plan" src="https://www.openstreetmap.org/export/embed.html?bbox=7.2790%2C43.6970%2C7.2890%2C43.7020&amp;layer=mapnik&amp;marker=43.6995%2C7.2840" title="Plan d'accès : 14 rue Bonaparte, Nice" loading="lazy"></iframe>
+          <p><a href="https://www.openstreetmap.org/?mlat=43.6995&amp;mlon=7.2840#map=17/43.6995/7.2840">Voir le plan en grand →</a></p>
+        </div>
+
+        <form class="formulaire" id="inscription" action="merci.html" method="get" aria-labelledby="titre-inscription">
+          <h2 id="titre-inscription">Inscription gratuite</h2>
+          <p class="texte-gris">Nouvelles œuvres, invitations aux vernissages, rencontres avec les artistes : recevez-les en premier.</p>
+          <div class="champs-duo">
+            <div class="champ">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" autocomplete="given-name" placeholder="Votre prénom" required>
+            </div>
+            <div class="champ">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" autocomplete="family-name" placeholder="Votre nom" required>
+            </div>
+          </div>
+          <div class="champ">
+            <label for="email">Adresse e-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="exemple@mail.fr" required>
+          </div>
+          <fieldset>
+            <legend class="champ-legende">Je souhaite recevoir</legend>
+            <div class="cases">
+              <label class="case"><input type="checkbox" name="interet" value="expositions" checked> Expositions</label>
+              <label class="case"><input type="checkbox" name="interet" value="oeuvres"> Nouvelles œuvres</label>
+              <label class="case"><input type="checkbox" name="interet" value="vernissages" checked> Vernissages</label>
+            </div>
+          </fieldset>
+          <label class="case case-petit"><input type="checkbox" name="consentement" value="oui" required> J'accepte que mes données soient utilisées pour recevoir les informations de la galerie. Désinscription possible à tout moment.</label>
+          <button class="btn btn-action btn-bloc" type="submit">Je m'inscris gratuitement</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-marque">Galerie Azurine</p>
+          <p>Galerie d'art à Nice — peinture expressionniste et méditerranéenne.</p>
+        </div>
+        <div>
+          <h2 class="footer-titre">Explorer</h2>
+          <ul class="footer-liste">
+            <li><a href="collection.html">Collection</a></li>
+            <li><a href="expositions.html">Expositions</a></li>
+            <li><a href="galerie.html">La galerie</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-titre">Visiter</h2>
+          <address>
+            <p>14 rue Bonaparte<br>06300 Nice</p>
+            <p><a href="tel:+33493271852">04 93 27 18 52</a></p>
+            <p><a href="mailto:contact@galerie-azurine.fr">contact@galerie-azurine.fr</a></p>
+          </address>
+        </div>
+        <div>
+          <h2 class="footer-titre">Horaires</h2>
+          <p>Mardi – samedi : 10h – 19h<br>Dimanche : 14h – 18h<br>Lundi : fermé</p>
+          <p>Instagram : @galerieazurine</p>
+        </div>
+      </div>
+      <div class="footer-bas">
+        <p>© 2026 Galerie Azurine</p>
+        <p><a href="mentions-legales.html">Mentions légales et confidentialité</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
