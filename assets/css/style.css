@@ -1,0 +1,953 @@
+/* ==========================================================================
+   Galerie Azurine — feuille de style
+   Approche « mobile first » : les styles de base visent le smartphone,
+   les media queries en fin de fichier adaptent la mise en page à la
+   tablette (600 px / 768 px) puis au desktop (1024 px).
+
+   Charte graphique (étape 1, Figma)
+   - Encre        #141414  textes, bouton principal, bandeaux, pied de page
+   - Papier       #FAF8F4  fond principal
+   - Bleu Azur    #2340A0  liens, actions, section exposition
+   - Bleu survol  #152B73  survol des boutons
+   - Ocre soleil  #D9A23A  accents décoratifs, état « pressé »
+   - Lin          #F0EBE1  fonds secondaires
+   - Gris texte   #5B5B5B  textes secondaires
+   - Bordure      #CFC7B8  bordures, champs
+   - Erreur       #B42318  messages d'erreur
+   Typographies : Instrument Serif (titres), Manrope (textes)
+   ========================================================================== */
+
+/* ---------- Polices (hébergées localement, licence SIL OFL) ---------- */
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrument-serif-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #FAF8F4;
+  color: #141414;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: #2340A0;
+}
+
+a:hover {
+  color: #152B73;
+}
+
+a:focus,
+button:focus,
+input:focus {
+  outline: 3px solid #D9A23A;
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 38px;
+  line-height: 1.05;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+h1 em,
+h2 em {
+  color: #2340A0;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 56px 0;
+}
+
+.stack > * + * {
+  margin-top: 20px;
+}
+
+.surtitre {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5B5B5B;
+}
+
+.lead {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #3A3A3A;
+}
+
+.texte-gris {
+  color: #5B5B5B;
+}
+
+.signature {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: 30px;
+  color: #2340A0;
+}
+
+.fond-lin {
+  background-color: #F0EBE1;
+}
+
+.fond-bleu {
+  background-color: #2340A0;
+  color: #FFFFFF;
+}
+
+.fond-bleu .surtitre,
+.fond-bleu h2,
+.fond-bleu p {
+  color: #FFFFFF;
+}
+
+.fond-bleu a:not(.btn) {
+  color: #FFFFFF;
+}
+
+/* ---------- Utilitaires d'espacement ---------- */
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+.titre-bloc {
+  margin: 12px 0 40px;
+}
+
+.pb-section {
+  padding-bottom: 80px;
+}
+
+.sans-marge {
+  margin-bottom: 0;
+}
+
+.aligne-haut {
+  align-items: start;
+}
+
+.centre {
+  justify-content: center;
+}
+
+/* ---------- Accessibilité ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  background-color: #141414;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 12px;
+  color: #FFFFFF;
+}
+
+/* ---------- Boutons (composant « Bouton » de la charte) ---------- */
+.btn {
+  display: inline-block;
+  min-height: 48px;
+  padding: 13px 26px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-principal {
+  background-color: #141414;
+  color: #FFFFFF;
+}
+
+.btn-action {
+  background-color: #2340A0;
+  color: #FFFFFF;
+}
+
+.btn-principal:hover,
+.btn-action:hover {
+  background-color: #152B73;
+  color: #FFFFFF;
+}
+
+.btn-secondaire {
+  background-color: transparent;
+  border-color: #141414;
+  color: #141414;
+}
+
+.btn-secondaire:hover {
+  background-color: #141414;
+  color: #FFFFFF;
+}
+
+.btn:active {
+  background-color: #D9A23A;
+  border-color: #D9A23A;
+  color: #141414;
+  transform: scale(0.98);
+}
+
+.btn-bloc {
+  display: block;
+  width: 100%;
+}
+
+.boutons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lien-fleche {
+  font-weight: 600;
+}
+
+/* ---------- En-tête et navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #FAF8F4;
+  border-bottom: 1px solid #E2DCD0;
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #141414;
+  text-decoration: none;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.logo:hover {
+  color: #141414;
+}
+
+.menu-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: #141414;
+  cursor: pointer;
+}
+
+.menu-toggle svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.js .menu-toggle {
+  display: block;
+}
+
+.main-nav {
+  width: 100%;
+  padding: 8px 0 24px;
+}
+
+.js .main-nav {
+  display: none;
+}
+
+.js .main-nav.is-open {
+  display: block;
+}
+
+.main-nav ul {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav li a {
+  display: block;
+  padding: 10px 0;
+  color: #141414;
+  text-decoration: none;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.main-nav li a:hover,
+.main-nav li a[aria-current="page"] {
+  color: #2340A0;
+}
+
+.main-nav li a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* ---------- Pied de page ---------- */
+.site-footer {
+  background-color: #141414;
+  color: #F0EBE1;
+  padding: 48px 0 28px;
+  font-size: 15px;
+}
+
+.site-footer a {
+  color: #F0EBE1;
+}
+
+.site-footer a:hover {
+  color: #D9A23A;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.footer-marque {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 32px;
+  line-height: 1;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.footer-titre {
+  margin: 0 0 10px;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #D9A23A;
+}
+
+.site-footer address {
+  font-style: normal;
+}
+
+.site-footer address p + p,
+.site-footer div > p + p {
+  margin-top: 8px;
+}
+
+.footer-liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-liste li + li {
+  margin-top: 6px;
+}
+
+.footer-bas {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #5B5B5B;
+  color: #CFC7B8;
+  font-size: 13px;
+}
+
+.footer-bas a {
+  color: #CFC7B8;
+}
+
+/* ---------- Accueil : hero ---------- */
+.hero {
+  display: grid;
+  gap: 32px;
+  padding-top: 36px;
+  padding-bottom: 48px;
+}
+
+.hero-texte > * + * {
+  margin-top: 20px;
+}
+
+.hero-visuel {
+  position: relative;
+  padding-bottom: 72px;
+}
+
+.hero-visuel img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.carte-moment {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  display: block;
+  padding: 16px 20px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 12px 32px rgba(20, 20, 20, 0.14);
+  color: #141414;
+  text-decoration: none;
+}
+
+.carte-moment:hover {
+  color: #141414;
+}
+
+.carte-moment .surtitre {
+  color: #2340A0;
+}
+
+.carte-moment strong {
+  display: block;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.carte-moment span {
+  display: block;
+  font-size: 14px;
+  color: #5B5B5B;
+}
+
+/* ---------- Bandeau des artistes ---------- */
+.bandeau {
+  background-color: #141414;
+  padding: 24px 0;
+}
+
+.bandeau ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bandeau li {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+.bandeau li + li::before {
+  content: "•";
+  margin: 0 12px;
+  color: #D9A23A;
+}
+
+.bandeau a {
+  color: #FAF8F4;
+  text-decoration: none;
+}
+
+.bandeau a:hover {
+  color: #D9A23A;
+}
+
+/* ---------- Titres de section ---------- */
+.titre-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.titre-section > div > * + * {
+  margin-top: 12px;
+}
+
+/* ---------- Cartes « œuvre » (composant Carte œuvre) ---------- */
+.grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 32px;
+}
+
+.card-link {
+  display: block;
+  color: #141414;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: #141414;
+}
+
+.card-link img {
+  width: 100%;
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-title {
+  margin-top: 14px;
+  transition: color 0.2s ease;
+}
+
+.card-meta {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #3A3A3A;
+}
+
+.card-more {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2340A0;
+}
+
+.card-link:hover img {
+  box-shadow: 0 14px 28px rgba(20, 20, 20, 0.22);
+  transform: translateY(-4px);
+}
+
+.card-link:hover .card-title {
+  color: #2340A0;
+}
+
+.card-link:hover .card-more {
+  text-decoration: underline;
+}
+
+.card[hidden] {
+  display: none;
+}
+
+/* ---------- Filtres de la collection ---------- */
+.filtres {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+
+.filtres[hidden] {
+  display: none;
+}
+
+.filtre {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1.5px solid #CFC7B8;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #141414;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtre:hover {
+  border-color: #141414;
+}
+
+.filtre[aria-pressed="true"] {
+  background-color: #141414;
+  border-color: #141414;
+  color: #FFFFFF;
+}
+
+/* ---------- Mise en page en deux colonnes ---------- */
+.split {
+  display: grid;
+  gap: 32px;
+}
+
+.split img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* ---------- Listes d'informations (horaires, détails d'une œuvre) ---------- */
+.infos {
+  margin: 0;
+}
+
+.infos div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid #CFC7B8;
+}
+
+.infos dt {
+  font-weight: 700;
+}
+
+.infos dd {
+  margin: 0;
+}
+
+.fond-bleu .infos div {
+  border-top-color: #8FA0D6;
+}
+
+/* ---------- Exposition ---------- */
+.expo-infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin: 0;
+}
+
+.expo-infos dt {
+  font-weight: 700;
+}
+
+.expo-infos dd {
+  margin: 0;
+}
+
+.carte-expo {
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.carte-expo img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.carte-expo-texte {
+  padding: 24px;
+}
+
+.carte-expo-texte > * + * {
+  margin-top: 8px;
+}
+
+/* ---------- La galerie ---------- */
+.etapes {
+  display: grid;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etapes li {
+  padding-top: 20px;
+  border-top: 2px solid #2340A0;
+}
+
+.etape-date {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 32px;
+  line-height: 1;
+  color: #2340A0;
+}
+
+.missions {
+  display: grid;
+  gap: 24px;
+}
+
+.mission {
+  padding: 28px;
+  background-color: #FFFFFF;
+  border: 1px solid #CFC7B8;
+  border-radius: 4px;
+}
+
+.mission h3 {
+  margin-bottom: 10px;
+}
+
+/* ---------- Fiche œuvre ---------- */
+.fil-ariane {
+  padding: 24px 0 8px;
+  font-size: 14px;
+}
+
+.fil-ariane ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #5B5B5B;
+}
+
+.fil-ariane li + li::before {
+  content: "/";
+  margin-right: 4px;
+}
+
+.fil-ariane a {
+  color: #2340A0;
+  font-weight: 600;
+}
+
+.oeuvre {
+  display: grid;
+  gap: 32px;
+  padding-bottom: 56px;
+}
+
+.oeuvre-visuel img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.oeuvre-details > * + * {
+  margin-top: 22px;
+}
+
+.oeuvre-details .surtitre {
+  color: #2340A0;
+}
+
+.prix {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 26px;
+}
+
+/* ---------- Formulaire d'inscription (composant Champ saisie) ---------- */
+.formulaire {
+  padding: 24px 20px;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+}
+
+.formulaire > * + * {
+  margin-top: 18px;
+}
+
+.champ label,
+.champ-legende {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.champ input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1.5px solid #CFC7B8;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  color: #141414;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.champ input:focus {
+  border-color: #2340A0;
+  outline: 2px solid #2340A0;
+  outline-offset: 0;
+}
+
+.champs-duo {
+  display: grid;
+  gap: 18px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+.cases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.case {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.case input {
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+}
+
+.case-petit {
+  font-size: 13px;
+  color: #5B5B5B;
+}
+
+.carte-plan {
+  display: block;
+  width: 100%;
+  height: 260px;
+  border: 0;
+  border-radius: 4px;
+}
+
+/* ---------- Page de confirmation ---------- */
+.confirmation {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 96px 20px;
+  text-align: center;
+}
+
+.confirmation > * + * {
+  margin-top: 22px;
+}
+
+.icone-ok {
+  display: block;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+}
+
+/* ---------- Mentions légales ---------- */
+.texte-long {
+  max-width: 760px;
+}
+
+.texte-long h2 {
+  margin-top: 40px;
+  margin-bottom: 12px;
+  font-size: 30px;
+}
+
+.texte-long p + p {
+  margin-top: 12px;
+}
