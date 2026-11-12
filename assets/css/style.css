@@ -951,3 +951,223 @@ legend {
 .texte-long p + p {
   margin-top: 12px;
 }
+
+/* ==========================================================================
+   Responsive — tablette et desktop
+   ========================================================================== */
+
+/* ---------- Grand smartphone / petite tablette ---------- */
+@media (min-width: 600px) {
+  .grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .boutons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .champs-duo {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .infos div {
+    grid-template-columns: 160px 1fr;
+  }
+
+  .btn-bloc {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+/* ---------- Tablette ---------- */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  h1 {
+    font-size: 64px;
+  }
+
+  h2 {
+    font-size: 48px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  .bandeau li {
+    font-size: 32px;
+  }
+
+  .titre-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .etapes,
+  .missions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  .footer-bas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .formulaire {
+    padding: 40px;
+  }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 80px;
+  }
+
+  .section {
+    padding: 104px 0;
+  }
+
+  h1 {
+    font-size: 84px;
+  }
+
+  h2 {
+    font-size: 56px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  /* Navigation horizontale : le bouton menu disparaît */
+  .js .menu-toggle,
+  .menu-toggle {
+    display: none;
+  }
+
+  .header-inner {
+    flex-wrap: nowrap;
+    min-height: 88px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
+
+  .main-nav,
+  .js .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: auto;
+    padding: 0;
+  }
+
+  .main-nav ul {
+    display: flex;
+    gap: 28px;
+    margin: 0;
+  }
+
+  .main-nav li a {
+    padding: 6px 0;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .main-nav .btn {
+    min-height: 44px;
+    padding: 11px 22px;
+  }
+
+  .hero {
+    grid-template-columns: 5fr 6fr;
+    align-items: center;
+    gap: 64px;
+    padding-top: 72px;
+    padding-bottom: 88px;
+  }
+
+  .hero-visuel {
+    padding-bottom: 0;
+  }
+
+  .carte-moment {
+    left: -40px;
+    right: auto;
+    bottom: 40px;
+    max-width: 280px;
+  }
+
+  .bandeau {
+    padding: 36px 0;
+  }
+
+  .bandeau li {
+    font-size: 38px;
+  }
+
+  .grille {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grille-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 72px;
+  }
+
+  .split-inverse > :first-child {
+    order: 2;
+  }
+
+  .oeuvre {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding-bottom: 104px;
+  }
+
+  .carte-expo img {
+    height: 320px;
+  }
+
+  .confirmation {
+    padding: 160px 20px;
+  }
+}
+
+/* ---------- Préférence « réduire les animations » ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn,
+  .filtre,
+  .card-link img,
+  .card-title {
+    transition: none;
+  }
+}
