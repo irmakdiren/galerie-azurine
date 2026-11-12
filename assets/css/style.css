@@ -206,7 +206,7 @@ p {
 }
 
 .aligne-haut {
-  align-items: start;
+  align-items: flex-start;
 }
 
 .centre {
@@ -288,7 +288,7 @@ p {
 
 .btn:active {
   background-color: #D9A23A;
-  border-color: #D9A23A;
+  border-color: transparent;
   color: #141414;
   transform: scale(0.98);
 }
@@ -667,7 +667,7 @@ p {
 
 .filtre[aria-pressed="true"] {
   background-color: #141414;
-  border-color: #141414;
+  border-color: transparent;
   color: #FFFFFF;
 }
 
